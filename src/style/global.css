@@ -1,7 +1,13 @@
 @import url('./main.css');
 @import url('./reset.css');
+@import url("./pages.css");
 
-
+:root {
+  --color-bg: #050b19;
+  --font-primary: #fff;
+  --secondary-color: #fedc34;
+  --color-logo: #c92935;
+}
 
 body {
   display: flex;
@@ -9,7 +15,6 @@ body {
   align-items: center;
   min-height: 100vh;
   background-color: #202020;
-  user-select: none;
 }
 
 h2 {

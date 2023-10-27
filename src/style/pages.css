@@ -1,0 +1,93 @@
+.wrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 560px;
+}
+
+.pages {
+  opacity: 1;
+  transition: opacity 0.7s ease;
+  z-index: 1;
+  height: 100%;
+  width: 560px;
+  color: #fff;
+  text-align: center;
+}
+.page1 {
+  height: 100vh;
+  z-index: 3;
+  background-color: #fff;
+}
+.page2 {
+  z-index: 2;
+  opacity: 0;
+  padding: 2.438rem 0;
+}
+
+#pageGame {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5.125rem;
+  margin: auto;
+  background-color: var(--color-bg);
+  padding: 2.438rem 0;
+  align-items: center;
+}
+
+/* .pages, */
+.page1,
+.page2 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#trocarPagina {
+  position: relative;
+  background-color: var(--secondary-color);
+  color: var(--color-logo);
+  width: 18.75rem;
+  height: 3.5rem;
+  border-radius: 27px;
+  z-index: 1;
+}
+
+.move-from-top-entrada {
+  animation: moveFromTopEntrada 0.7s ease both;
+}
+.move-from-top-saida {
+  animation: moveFromTopSaida 0.7s ease both;
+}
+
+@keyframes moveFromTopEntrada {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes moveFromTopSaida {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.mainLogo img {
+  margin-top: .938rem;
+  width: 5.625rem;
+  margin: auto;
+}
+
+.mainImg img {
+  width: 22.75rem;
+  margin: auto;
+}
+
