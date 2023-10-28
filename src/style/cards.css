@@ -1,0 +1,70 @@
+/* Estilo base para o tabuleiro */
+#tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(4, 100px); /* Defina o tamanho das colunas conforme necessário */
+  grid-gap: 10px; /* Espaço entre as cartas */
+  justify-content: center; /* Centralize o tabuleiro horizontalmente */
+  align-content: center; /* Centralize o tabuleiro verticalmente */
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* Estilo das cartas */
+.carta {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 100px;
+  cursor: pointer;
+  border: 2px solid #2980b9;
+  border-radius: 10px; 
+  transition: background-color 0.3s;
+
+  transform: scale(1) rotateY(0deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  user-select: none;
+}
+.carta:active {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+  box-shadow: 0px 2px 5px 5px rgb(0 0 0 / 30%);
+}
+.carta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #404040;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+  transition: 0.3s;
+  opacity: 70%;
+}
+
+.carta.boxOpen {
+  transform: rotateY(-180deg);
+}
+.boxOpen::after,
+.boxMatch::after {
+  transform: rotateY(0deg);
+}
+
+
+/* Estilo das cartas encontradas */
+
+
+
+/* Outros estilos, temporizador, contagem de cliques */
+#contadorCliques, #tempoRestante {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#msgGame {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}

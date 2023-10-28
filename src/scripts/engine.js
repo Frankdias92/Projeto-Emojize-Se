@@ -1,129 +1,153 @@
-const emojis = [
-  "💻",
+const emoji = [
   "💻",
   "👋",
-  "👋",
-  "🙌",
   "🙌",
   "🚀",
-  "🚀",
-  "📱",
   "📱",
   "✔️",
-  "✔️",
   "👻",
-  "👻",
-  "🤖",
   "🤖",
 ];
-
-let matchedCards = 0;
-let moves = 0;
-let timer;
-let shuffleEmojis;
 let openCards = [];
-let canClick = true;
 
-const gameBoard = document.querySelector(".game");
-const movesCounter = document.querySelector(".moves");
-const timerCounter = document.querySelector(".timer");
+const nivelSelecionado = document.querySelector('#nivel');
+const tabuleiro = document.querySelector('#tabuleiro');
 
-function shuffleCards(cards) {
-  for (let i = cards.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [cards[i], cards[j]] = [cards[j], cards[i]];
+nivelSelecionado.addEventListener('change', function() {
+    const selectedLevel = nivelSelecionado.value;
+    if (selectedLevel === 'facil') {
+        criarCartas(12, emoji);
+    } else if (selectedLevel === 'dificil') {
+        criarCartas(16, emoji);
+
+    }
+    criarParesDeCartas(); // Chame a função para criar pares de cartas
+});
+
+function criarCartas(numCartas, emojis) {
+  tabuleiro.innerHTML = '';
+  
+  let shuffleEmojis = emojis.slice(0, numCartas / 2);
+  shuffleEmojis = shuffleEmojis.concat(shuffleEmojis);
+  
+  shuffleEmojis = shuffleEmojis.sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < numCartas; i++) {
+    const carta = document.createElement('div');
+    carta.classList.add('carta');
+    const conteudo = document.createElement('div');
+    conteudo.classList.add('conteudo-carta'); 
+    conteudo.textContent = shuffleEmojis[i];
+    carta.onclick = handleClick;
+    carta.appendChild(conteudo);
+    tabuleiro.appendChild(carta);
   }
-  return cards;
 }
 
-function mixCards() {
-  shuffleEmojis = shuffleCards(emojis);
-  for (let i = 0; i < shuffleEmojis.length; i++) {
-    let box = document.createElement("div");
-    box.className = "item";
-    box.innerHTML = shuffleEmojis[i];
-    box.onclick = handleClick;
-    gameBoard.appendChild(box);
+function handleClick() {
+  if ( openCards.length < 2 ) {
+    this.classList.add( 'boxOpen' );
+    openCards.push( this );
+  }
+  if( openCards.length == 2 ) {
+    setTimeout( checkMatch, 500 );
   }
 }
 
-function startTimer() {
-  let timeLeft = 60;
-  timerCounter.textContent = timeLeft;
-  timer = setInterval(() => {
-    if (timeLeft > 0) {
-      timeLeft--;
-      timerCounter.textContent = timeLeft;
-    } else {
-      clearInterval(timer);
-      showModal("Você perdeu!");
+function checkMatch() {
+  if ( openCards[0].innerHTML === openCards[1].innerHTML ) {
+    openCards[0].classList.add( 'boxMatch' );
+    openCards[1].classList.add( 'boxMatch' );
+  } else {
+    openCards[0].classList.remove( 'boxOpen' );
+    openCards[1].classList.remove( 'boxOpen' );
+  }
+
+  openCards = [];
+
+  if ( document.querySelectorAll( '.boxMatch' ).length === document.querySelectorAll( '.conteudo-carta' ).length ) {
+    alert( "você venceur" );
+    temporizador()
+  }
+} 
+
+
+function embaralharCartas(cartas) {
+  for (let i = cartas.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cartas[i], cartas[j]] = [cartas[j], cartas[i]];
+  }
+}
+
+function criarParesDeCartas() {
+  const cartas = [];
+  for (let i = 1; i <= 6; i++) {
+      cartas.push(i, i);
+  }
+  embaralharCartas(cartas);
+  return cartas;
+}
+
+let cliques = 0;
+
+function incrementarContadorCliques() {
+    cliques++;
+    document.querySelector('#contadorCliques').textContent = cliques;
+    console.log(cliques);
+}
+
+let interval;
+
+function temporizador() {
+  timerId = document.querySelector('#tempoRestante');
+  let segundos = 10;
+
+  const interval = setInterval(() => {
+    const timeLeft = segundos % 10;
+
+    timerId.textContent = `Tempo Restante: ${timeLeft}s`
+    console.log(`Tempo Restante: ${timeLeft}s`);
+
+    segundos --;
+  
+    if ( segundos < 0 ) {
+      clearInterval( interval );
+      alert( 'Tempo Esgotado!' );
     }
   }, 1000);
 }
 
-function showModal(message) {
-  const modal = document.createElement("div");
-  modal.className = "modal";
-  modal.innerHTML = `
-    <div class="modal-content">
-      <h2>${message}</h2>
-      <button class="btn-restart">Jogar novamente</button>
-    </div>
-  `;
-  document.body.appendChild(modal);
-  const restartButton = modal.querySelector(".btn-restart");
-  restartButton.addEventListener("click", () => {
-    modal.remove();
-    resetGame();
-  });
-}
-
-function resetGame() {
-  matchedCards = 0;
-  moves = 0;
-  movesCounter.textContent = moves;
-  timerCounter.textContent = 60;
-  gameBoard.innerHTML = "";
-  mixCards();
-  startTimer();
-}
-
-function handleClick() {
-  if (!canClick || this.classList.contains("boxMatch")) {
-    return;
-  }
-
-  if (!this.classList.contains("boxOpen")) {
-    this.classList.add("boxOpen");
-    openCards.push(this);
-  }
-
-  if (openCards.length === 2) {
-    canClick = false;
-    setTimeout(checkMatch, 500);
-  }
-}
-
-
-function checkMatch() {
-  if (openCards[0].innerHTML === openCards[1].innerHTML) {
-    openCards[0].classList.add("boxMatch");
-    openCards[1].classList.add("boxMatch");
-    matchedCards++;
-    if (matchedCards === emojis.length / 2) {
-      clearInterval(timer);
-      showModal("Você ganhou!");
+function verificarCartas() {
+  if (cartaSelecionada1 && cartaSelecionada2) {
+    if (cartaSelecionada1.textContent === cartaSelecionada2textContent) {
+        cartaSelecionada1.classList.add('encontrada');
+        cartaSelecionada2.classList.add('encontrada');
+        cartaSelecionada1.removeEventListener('click', virarCarta);
+        cartaSelecionada2.removeEventListener('click', virarCarta);
+        
+    } else {
+        setTimeout(() => {
+            cartaSelecionada1.classList.remove('virada');
+            cartaSelecionada2.classList.remove('virada');
+            cartaSelecionada1.addEventListener('click', virarCarta);
+            cartaSelecionada2.addEventListener('click', virarCarta);
+            cartaSelecionada1.textContent = '';
+            cartaSelecionada2.textContent = '';
+        }, 1000);
     }
-  } else {
-    openCards[0].classList.remove("boxOpen");
-    openCards[1].classList.remove("boxOpen");
+    cartaSelecionada1 = null;
+    cartaSelecionada2 = null;
   }
 
-  openCards = [];
-  canClick = true;
-  moves++;
-  movesCounter.textContent = moves;
 }
 
-mixCards();
-startTimer();
+const cartas = document.querySelectorAll('.carta');
+cartas.forEach(carta => carta.addEventListener('click', virarCarta));
+
+
+
+
+function exibirMensagem(mensagem) {
+  document.getElementById('mensagem').textContent = mensagem;
+}
+

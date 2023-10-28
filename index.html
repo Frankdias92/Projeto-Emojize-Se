@@ -15,7 +15,7 @@
 <body>
 
   <div class="wrapper">
-    <div class="pages page1">
+    <!-- <div class="pages page1">
       <section id="pageGame" class="wrap">
         <div class="mainLogo">
           <img
@@ -33,18 +33,43 @@
     
         <button id="trocarPagina" onclick="startTimer()">Vamos Jogar!</button>
       </section>
-    </div>
+    </div> -->
   
   
-    <div class="container pages page2">
+    <!-- <div class="container pages-page2">
       <span class="moves">0</span>
       <span class="timer"></span>
       <h2>Card Memo</h2>
       <div class="game"></div>
     
       <button class="reset" onclick="resetGame()">RESET GAME</button>
-    </div>
+    </div> -->
   </div>
+
+  <section class="wrapper container">
+  
+    <h1>Jogo de Memória</h1>
+    <div>
+      <label for="nivel">Selecione o nível:</label>
+      <select id="nivel">
+          <option value="facil" selected>Fácil (12 cartas)</option>
+          <option value="intermediario">Intermediario (16 cartas)</option>
+          <option value="dificil">Difícil (16 cartas)</option>
+      </select>
+    </div>
+
+    <div>
+      <p>Contagem de cliques: <span id="contadorCliques">0</span></p>
+      <p>Tempo restante: <span id="tempoRestante">60</span> segundos</p>
+    </div>
+    <button class="btn-init">Start</button>
+
+    <div id="tabuleiro">
+      <!-- Aqui você vai gerar as cartas dinamicamente em JavaScript -->
+    </div>
+    <div id="mensagem"></div>
+
+  </section>
 
   
 
