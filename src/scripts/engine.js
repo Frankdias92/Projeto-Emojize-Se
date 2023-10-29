@@ -1,3 +1,14 @@
+const state = {
+  view: {
+    timeLeft: document.querySelector('#tempoRestante'),
+    counterClick: document.querySelector('#contadorCliques'),
+    result: document.getElementById('mensagem'),
+  },
+  values: {
+    clickResult: '',
+  }
+}
+
 const emoji = [
   "💻",
   "👋",
@@ -7,6 +18,11 @@ const emoji = [
   "✔️",
   "👻",
   "🤖",
+  "⚡",
+  "👾",
+  "🔥",
+  "🌛",
+  "🌞"
 ];
 let openCards = [];
 
@@ -17,10 +33,13 @@ nivelSelecionado.addEventListener('change', function() {
     const selectedLevel = nivelSelecionado.value;
     if (selectedLevel === 'facil') {
         criarCartas(12, emoji);
+    } else if (selectedLevel === 'medio') {
+      criarCartas(16, emoji);
     } else if (selectedLevel === 'dificil') {
-        criarCartas(16, emoji);
-      }
-      criarParesDeCartas(); // Chame a função para criar pares de cartas
+      criarCartas(24, emoji);
+    }
+
+  criarParesDeCartas();
 });
 
 function criarCartas(numCartas, emojis) {
@@ -65,8 +84,10 @@ function checkMatch() {
   openCards = [];
 
   if ( document.querySelectorAll( '.boxMatch' ).length === document.querySelectorAll( '.conteudo-carta' ).length ) {
-    alert( "você venceur" );
-    // temporizador()
+
+    const winMsg = (`Parabéns, você venceu com ${state.values.clickResult} clicks`);
+
+    exibirMensagem(winMsg);
   }
 } 
 
@@ -89,20 +110,26 @@ function criarParesDeCartas() {
 
 let cliques = 0;
 
-function incrementarContadorCliques() {
-    cliques++;
-    document.querySelector('#contadorCliques').textContent = cliques;
-    console.log(cliques);
+function counterCliques() {
+  // clickId = document.querySelector('#contadorCliques')
+  state.view.counterClick = state.values.clickResult;
+
+
+  $('#tabuleiro').click(() => {
+    state.values.clickResult ++;
+    state.view.counterClick.textContent = state.values.clickResult;
+  })
 }
 
 let interval;
+let isResetClicked;
 
 function temporizador() {
   timerId = document.querySelector('#tempoRestante');
-  let segundos = 10;
+  let segundos = 30;
 
   const interval = setInterval(() => {
-    const timeLeft = segundos % 10;
+    const timeLeft = segundos % 60;
 
     timerId.textContent = `Tempo Restante: ${timeLeft}s`
     console.log(`Tempo Restante: ${timeLeft}s`);
@@ -112,6 +139,9 @@ function temporizador() {
     if ( segundos < 0 ) {
       clearInterval( interval );
       alert( 'Tempo Esgotado!' );
+    } else if (isResetClicked) {
+      clearInterval( interval );
+      isResetClicked = false;
     }
   }, 1000);
 }
@@ -143,9 +173,6 @@ function verificarCartas() {
 const cartas = document.querySelectorAll('.carta');
 cartas.forEach(carta => carta.addEventListener('click', virarCarta));
 
-
-
-
 function exibirMensagem(mensagem) {
   document.getElementById('mensagem').textContent = mensagem;
 }
@@ -157,6 +184,7 @@ function btnStart () {
     $('.btn-Init').css('display', 'none');
     $('.btn-Reset').css('display', 'flex');
     temporizador()
+    counterCliques()
   })
 
   $('.btn-Reset').click( () => {
@@ -164,6 +192,8 @@ function btnStart () {
     $('.selectNivel').css('display', 'flex');
     $('.btn-Reset').css('display', 'none');
     $('.btn-Init').css('display', 'flex');
+    
+    isResetClicked = true;
   })
 }
 
