@@ -48,8 +48,8 @@
 
   <section class="wrapper container">
   
-    <h1>Jogo de Memória</h1>
-    <div>
+    <h1>Card Memo</h1>
+    <div class="selectNivel">
       <label for="nivel">Selecione o nível:</label>
       <select id="nivel">
           <option value="facil" selected>Fácil (12 cartas)</option>
@@ -58,13 +58,15 @@
       </select>
     </div>
 
-    <div>
+    <div class="containerGame">
+      <div id="tempoRestante"></div>
       <p>Contagem de cliques: <span id="contadorCliques">0</span></p>
-      <p>Tempo restante: <span id="tempoRestante">60</span> segundos</p>
+      <!-- <p>Tempo restante: <span >60</span> segundos</p> -->
+      <button class="btn-Init">Jogar</button>
+      <button class="btn-Reset">Jogar Novamente?</button>
     </div>
-    <button class="btn-init">Start</button>
 
-    <div id="tabuleiro">
+    <div id="tabuleiro" style="opacity: 0;">
       <!-- Aqui você vai gerar as cartas dinamicamente em JavaScript -->
     </div>
     <div id="mensagem"></div>
@@ -77,5 +79,6 @@
   <!-- SCRIPT -->
   <script src="./src/scripts/engine.js"></script>
   <script src="./src/scripts/pages.js"></script>
+  <script src="./src/scripts/jquery-10.min.js"></script>
 </body>
 </html>

@@ -19,9 +19,8 @@ nivelSelecionado.addEventListener('change', function() {
         criarCartas(12, emoji);
     } else if (selectedLevel === 'dificil') {
         criarCartas(16, emoji);
-
-    }
-    criarParesDeCartas(); // Chame a função para criar pares de cartas
+      }
+      criarParesDeCartas(); // Chame a função para criar pares de cartas
 });
 
 function criarCartas(numCartas, emojis) {
@@ -67,7 +66,7 @@ function checkMatch() {
 
   if ( document.querySelectorAll( '.boxMatch' ).length === document.querySelectorAll( '.conteudo-carta' ).length ) {
     alert( "você venceur" );
-    temporizador()
+    // temporizador()
   }
 } 
 
@@ -151,3 +150,21 @@ function exibirMensagem(mensagem) {
   document.getElementById('mensagem').textContent = mensagem;
 }
 
+function btnStart () {
+  $('.btn-Init').click( () => {
+    $('#tabuleiro').css('opacity', '1');
+    $('.selectNivel').css('display', 'none');
+    $('.btn-Init').css('display', 'none');
+    $('.btn-Reset').css('display', 'flex');
+    temporizador()
+  })
+
+  $('.btn-Reset').click( () => {
+    $('#tabuleiro').css('opacity', '0');
+    $('.selectNivel').css('display', 'flex');
+    $('.btn-Reset').css('display', 'none');
+    $('.btn-Init').css('display', 'flex');
+  })
+}
+
+btnStart ()
