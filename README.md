@@ -12,7 +12,7 @@
  
  Em resumo, o projeto é um jogo de memória com emojis que oferece entretenimento, aprendizado e desenvolvimento cognitivo para jogadores de todas as idades.
 
- ![90% Completo](https://img.shields.io/badge/NOTA:%20PROGRESSO-90%-76B900?style=for-the-badge&logo=&logoColor=white)
+ ![90% Completo](https://img.shields.io/badge/NOTA:%20PROGRESSO-90-76B900?style=for-the-badge&logo=&logoColor=white)
 
 
 **Tecnologias Utilizadas**
@@ -51,7 +51,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <a href = "frankmcdias@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23931?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a> <a href="https://www.linkedin.com/in/franklinmacedodias" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
 
 
-Project Link:<br><a href="https://github.com/Frankdias92/Primeiro-Game-Detona-Ralph" target="_blank"><img src="https://img.shields.io/badge/-Game%20Detona%20Ralph-000?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
+Project Link:<br><a href="https://github.com/Frankdias92/Projeto-Emojize-Se" target="_blank"><img src="https://img.shields.io/badge/-Projeto%20Emojize%20--%20Se-000?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
