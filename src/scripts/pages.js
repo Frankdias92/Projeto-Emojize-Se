@@ -18,3 +18,13 @@ $(document).ready(function () {
   });
 
 });
+
+
+$(document).ready(function(){
+  $('#dropDown').mouseover(function(){
+    $('.drop-down').addClass('drop-down--active');
+  });
+  $('.drop-down').click(function(){
+    $('.drop-down').removeClass('drop-down--active');
+  });
+});

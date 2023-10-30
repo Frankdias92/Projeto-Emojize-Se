@@ -3,6 +3,10 @@
 @import url("./pages.css");
 @import url("./cards.css");
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=East+Sea+Dokdo&family=Londrina+Sketch&display=swap');
+
+
+
 :root {
   --color-bg: #050b19;
   --font-primary: #fff;
@@ -12,9 +16,15 @@
 
 body {
   display: flex;
+  font-family: 'Bebas Neue', sans-serif;
+  /* font-family: 'East Sea Dokdo', sans-serif; */
+  /* font-family: 'Londrina Sketch', sans-serif; */
   flex-direction: column;
   align-items: center;
-  background-color: #202020;
+  background-image: linear-gradient(to right top, #845ec2, #825cc0, #805abe, #7e58bc, #7c56ba, #744fb2, #6b48a9, #6341a1, #533391, #432581, #331771, #220862);
+  height: 1300px;
+  background-size: contain;
+  scroll-behavior: smooth ;
 }
 
 h2 {

@@ -2,6 +2,48 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Reboto", sans-serif;
+  /* font-family: "Reboto", sans-serif; */
   outline: none;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #F9F871 #DFE9EB;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #f9f971;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #f5f511;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgb(95, 16, 168);
 }

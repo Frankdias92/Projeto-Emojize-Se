@@ -15,7 +15,7 @@ const emoji = [
   "🙌",
   "🚀",
   "📱",
-  "✔️",
+  "⚔️",
   "👻",
   "🤖",
   "⚡",
@@ -29,13 +29,13 @@ let openCards = [];
 const nivelSelecionado = document.querySelector('#nivel');
 const tabuleiro = document.querySelector('#tabuleiro');
 
-nivelSelecionado.addEventListener('change', function() {
-    const selectedLevel = nivelSelecionado.value;
-    if (selectedLevel === 'facil') {
+nivelSelecionado.addEventListener('click', function(event) {
+    const selectedLevel = event.target.getAttribute('value');
+    if (selectedLevel == 'facil') {
         criarCartas(12, emoji);
-    } else if (selectedLevel === 'medio') {
+    } else if (selectedLevel == 'medio') {
       criarCartas(16, emoji);
-    } else if (selectedLevel === 'dificil') {
+    } else if (selectedLevel == 'dificil') {
       criarCartas(24, emoji);
     }
 

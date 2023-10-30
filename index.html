@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
   <!-- Jquery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -44,26 +45,46 @@
     
       <button class="reset" onclick="resetGame()">RESET GAME</button>
     </div> -->
-  </div>
+  <!-- </div> -->
 
   <section class="wrapperGame">
     <nav class="demo">
+
+      
+
+
       <div class="gameName wrapInfo">
         <h1>Card Memo</h1>
       </div>
   
       <div class="selectNivel wrapInfo">
-        <label for="nivel">Selecione o nível:</label>
-        <select id="nivel">
-            <option value="" selected></option>
-            <option value="facil">Fácil (12 cartas)</option>
-            <option value="medio">Médio (16 cartas)</option>
-            <option value="dificil">Difícil (24 cartas)</option>
-        </select>
+        <div class="table_center">
+          <div class="drop-down">
+            <div id="dropDown" class="drop-down__button">
+              <span class="drop-down__name">Selecione o Nivel</span>
+            </div>
+            
+            <div class="drop-down__menu-box">
+              <ul id="nivel" class="drop-down__menu">
+                <li value="facil" data-name="profile" class="drop-down__item">  Facil
+                  <a class="drop-down__item-icon" href="#">😁</a>
+                </li>
+
+                <li value="medio" data-name="dashboard" class="drop-down__item"> Medio 
+                  <a class="drop-down__item-icon" href="#">🚀</a>
+                </li>
+
+                <li value="dificil" data-name="activity" class="drop-down__item"> Dificil
+                  <a class="drop-down__item-icon" href="#">🤖</a>
+                </li>
+              </ul>
+            </div>
+          </div>
       </div>
-  
-      <div class="infoGame">
-        <div class="wrapInfo">
+      </div>
+
+      <div>
+        <div class="wrapInfo alignTimeLeft">
           <div id="tempoRestante"></div>
           <div id="contadorCliques"></div>
         </div>
@@ -75,16 +96,11 @@
       </div>
     </nav>
     
-
     <div id="tabuleiro" style="opacity: 1;">
-      <!-- Aqui você vai gerar as cartas dinamicamente em JavaScript -->
     </div>
     <div id="mensagem"></div>
 
   </section>
-
-  
-
 
   <!-- SCRIPT -->
   <script src="./src/scripts/engine.js"></script>
