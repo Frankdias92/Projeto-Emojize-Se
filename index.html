@@ -1,110 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="./src/imgs/rocket.svg"
+      type="image/x-icon"
+    />
 
-  <!-- Jquery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-
-  <title>Card Memo</title>
-  <!-- Folha de estilo -->
-  <link rel="stylesheet" href="./src/style/main.css">
-</head>
-<body>
-
-  <div class="wrapper">
-    <!-- <div class="pages page1">
-      <section id="pageGame" class="wrap">
-        <div class="mainLogo">
-          <img
-            src="./src/imgs/logotipoRalph.png"
-            alt=""
-          />
+    <title>Emojize-se</title>
+    <!-- Folha de estilo -->
+    <link rel="stylesheet" href="./src/style/main.css" />
+  </head>
+  <body>
+    <section class="wrapperGame">
+      <nav class="demo">
+        <div class="gameName wrapInfo">
+          <h1>Emojize-se</h1>
         </div>
-    
-        <div class="mainImg">
-          <img
-            src="./src/imgs/Ralph-2.png"
-            alt=""
-          />
-        </div>
-    
-        <button id="trocarPagina" onclick="startTimer()">Vamos Jogar!</button>
-      </section>
-    </div> -->
-  
-  
-    <!-- <div class="container pages-page2">
-      <span class="moves">0</span>
-      <span class="timer"></span>
-      <h2>Card Memo</h2>
-      <div class="game"></div>
-    
-      <button class="reset" onclick="resetGame()">RESET GAME</button>
-    </div> -->
-  <!-- </div> -->
 
-  <section class="wrapperGame">
-    <nav class="demo">
+        <div class="selectNivel wrapInfo">
+          <div class="table_center">
+            <div class="drop-down">
+              <div id="dropDown" class="drop-down__button">
+                <span class="drop-down__name">Selecione o Nivel</span>
+              </div>
 
-      
+              <div class="drop-down__menu-box">
+                <ul id="nivel" class="drop-down__menu">
+                  <li value="facil" data-name="profile" class="drop-down__item">
+                    Facil
+                    <a class="drop-down__item-icon" href="#">😁</a>
+                  </li>
 
+                  <li
+                    value="medio"
+                    data-name="dashboard"
+                    class="drop-down__item"
+                  >
+                    Medio
+                    <a class="drop-down__item-icon" href="#">🚀</a>
+                  </li>
 
-      <div class="gameName wrapInfo">
-        <h1>Card Memo</h1>
-      </div>
-  
-      <div class="selectNivel wrapInfo">
-        <div class="table_center">
-          <div class="drop-down">
-            <div id="dropDown" class="drop-down__button">
-              <span class="drop-down__name">Selecione o Nivel</span>
-            </div>
-            
-            <div class="drop-down__menu-box">
-              <ul id="nivel" class="drop-down__menu">
-                <li value="facil" data-name="profile" class="drop-down__item">  Facil
-                  <a class="drop-down__item-icon" href="#">😁</a>
-                </li>
-
-                <li value="medio" data-name="dashboard" class="drop-down__item"> Medio 
-                  <a class="drop-down__item-icon" href="#">🚀</a>
-                </li>
-
-                <li value="dificil" data-name="activity" class="drop-down__item"> Dificil
-                  <a class="drop-down__item-icon" href="#">🤖</a>
-                </li>
-              </ul>
+                  <li
+                    value="dificil"
+                    data-name="activity"
+                    class="drop-down__item"
+                  >
+                    Dificil
+                    <a class="drop-down__item-icon" href="#">🤖</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-      </div>
-      </div>
-
-      <div>
-        <div class="wrapInfo alignTimeLeft">
-          <div id="tempoRestante"></div>
-          <div id="contadorCliques"></div>
         </div>
 
-        <div class="wrapInfo alignBtn">
-          <button class="btn-Init">Jogar</button>
-          <button class="btn-Reset" style="display: none;">Jogar Novamente?</button>
+        <div>
+          <div class="wrapInfo alignTimeLeft">
+            <div id="tempoRestante"></div>
+            <div id="contadorCliques"></div>
+          </div>
+
+          <div class="wrapInfo alignBtn">
+            <button class="btn-Init">Jogar</button>
+            <button class="btn-Reset" style="display: none">
+              Jogar Novamente?
+            </button>
+          </div>
         </div>
-      </div>
-    </nav>
-    
-    <div id="tabuleiro" style="opacity: 1;">
-    </div>
-    <div id="mensagem"></div>
+      </nav>
 
-  </section>
+      <div id="tabuleiro" style="opacity: 0"></div>
+      <div id="mensagem"></div>
+    </section>
 
-  <!-- SCRIPT -->
-  <script src="./src/scripts/engine.js"></script>
-  <script src="./src/scripts/pages.js"></script>
-  <script src="./src/scripts/jquery-10.min.js"></script>
-</body>
+    <!-- SCRIPT -->
+    <script src="./src/scripts/engine.js"></script>
+    <script src="./src/scripts/pages.js"></script>
+    <script src="./src/scripts/jquery-10.min.js"></script>
+  </body>
 </html>

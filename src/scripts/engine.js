@@ -29,6 +29,7 @@ let openCards = [];
 const nivelSelecionado = document.querySelector('#nivel');
 const tabuleiro = document.querySelector('#tabuleiro');
 
+// NEXT IMPLEMENTATION - Create a function that will adjust grid when the dificulty changes to HARD
 nivelSelecionado.addEventListener('click', function(event) {
     const selectedLevel = event.target.getAttribute('value');
     if (selectedLevel == 'facil') {
@@ -110,6 +111,7 @@ function criarParesDeCartas() {
 
 let cliques = 0;
 
+// NEXT IMPLEMENTATION
 function counterCliques() {
   // clickId = document.querySelector('#contadorCliques')
   state.view.counterClick = state.values.clickResult;
@@ -123,10 +125,10 @@ function counterCliques() {
 
 let interval;
 let isResetClicked;
-
+// NEXT IMPLEMENTATION - fix bug when finish the game(timing continues after finish)
 function temporizador() {
   timerId = document.querySelector('#tempoRestante');
-  let segundos = 30;
+  let segundos = 60;
 
   const interval = setInterval(() => {
     const timeLeft = segundos % 60;
@@ -173,6 +175,7 @@ function verificarCartas() {
 const cartas = document.querySelectorAll('.carta');
 cartas.forEach(carta => carta.addEventListener('click', virarCarta));
 
+// NEXT IMPLEMENTATION - Create a modal for the msg
 function exibirMensagem(mensagem) {
   document.getElementById('mensagem').textContent = mensagem;
 }
